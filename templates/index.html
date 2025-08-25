@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Edad Equivalente</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    </style>
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>  
 <body>
-    <h1>Calculadora de Edad Equivalente</h1>
-    <p>¡Nuestra aplicación está funcionando!</p>
-    <p>El siguiente paso será añadir el formulario para los cálculos.</p>
+    <div class="container">
+        <h1>Calculadora de Edad Equivalente</h1>
+        
+        <form action="/" method="post">
+                
+            <label for="country">País:</label>
+            <!-- El 'value' hace que la selección sea persistente. 'or ''' evita que se imprima 'None' la primera vez. -->
+            <input list="country-list" id="country" name="country" placeholder="Escribe para buscar tu país..." value="{{ selected_data.country or '' }}" required>
+            <datalist id="country-list">
+                {% for country in countries %}
+                    <option value="{{ country }}">
+                {% endfor %}
+            </datalist>
+
+  
+
+                
+                <label for="age">Tu edad actual:</label>
+                <input type="number" id="age" name="age" placeholder="Ej: 30" min="0" max="120" value="{{ selected_data.age or '' }}" required>
+
+                <label for="year1">Año de referencia (el año en que tenías esa edad):</label>
+                <input type="number" id="year1" name="year1" placeholder="Ej: 1995" min="{{ min_year }}" max="{{ max_year }}" value="{{ selected_data.year1 or '' }}" required>
+
+                <label for="year2">Año de comparación:</label>
+                <input type="number" id="year2" name="year2" placeholder="Ej: 2023" min="{{ min_year }}" max="{{ max_year }}" value="{{ selected_data.year2 or '' }}" required>
+
+  
+            
+            <button type="submit">Calcular Edad Equivalente</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <h3>Resultado del Cálculo:</h3>
+                <p>
+                    Una persona de <strong>{{ result.user_age }} años</strong> en <strong>{{ result.user_country }}</strong>
+                    durante el año <strong>{{ result.year1 }}</strong> (con una esperanza de vida de {{ result.le_year1 }} años)...
+                </p>
+                <p>
+                    ...sería equivalente a una persona de <strong>{{ result.equivalent_age }} años</strong> en el año <strong>{{ result.year2 }}</strong>
+                    (donde la esperanza de vida era de {{ result.le_year2 }} años).
+                </p>
+            </div>
+            {% endif %}
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            
+        </div>
+        
+    </div>
 </body>
 </html>
