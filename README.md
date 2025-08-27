@@ -6,6 +6,9 @@
 
 <h1 id="versión-en-español">Calculadora de Edad Equivalente</h1>
 
+### 🚀 Demo en Vivo
+**Puedes probar la aplicación aquí: [https://sgrobpla.pythonanywhere.com/](https://sgrobpla.pythonanywhere.com/)**
+
 Esta es una aplicación web construida con Python y Flask que permite calcular la "edad equivalente" de una persona. El concepto se basa en comparar la proporción de la esperanza de vida que una persona ha vivido en una época determinada, con la edad que correspondería a esa misma proporción en otra época con una esperanza de vida diferente.
 
 ### ¿Cómo se usa?
@@ -48,6 +51,9 @@ Actualmente estoy trabajando en la implementación de traducciones para la inter
 ---
 
 <h1 id="equivalent-age-calculator">Equivalent Age Calculator</h1>
+
+### 🚀 Live Demo
+**You can try the live application here: [https://sgrobpla.pythonanywhere.com/](https://sgrobpla.pythonanywhere.com/)**
 
 This is a web application built with Python and Flask that allows you to calculate a person's "equivalent age." The concept is based on comparing the proportion of life expectancy a person has lived through in a given era, with the age that would correspond to that same proportion in another era with a different life expectancy.
 
