@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
+import os
 
 app = Flask(__name__)
 
@@ -11,9 +12,11 @@ def load_data():
     Carga, limpia y procesa los datos de esperanza de vida desde el archivo CSV.
     """
     try:
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        data_file_path = os.path.join(basedir, 'data', 'un_life_expectancy.csv')
         # Leemos el archivo CSV que descargaste
-        df = pd.read_csv('data/un_life_expectancy.csv')
-        
+        df = pd.read_csv(data_file_path)
+
         # Renombramos las columnas originales a nombres más simples y en minúsculas
         column_mapping = {
             'Country or Area': 'country',
@@ -22,21 +25,21 @@ def load_data():
             'Value': 'life_expectancy'
         }
         df.rename(columns=column_mapping, inplace=True)
-        
-        variant_to_keep = 'Medium' 
+
+        variant_to_keep = 'Medium'
         df = df[df['variant'] == variant_to_keep].copy()
-        
+
         # Convertimos las columnas a tipos de datos numéricos para poder hacer cálculos.
         # 'coerce' convertirá cualquier valor no numérico en 'NaN' (Not a Number)
         df['year'] = pd.to_numeric(df['year'], errors='coerce')
         df['life_expectancy'] = pd.to_numeric(df['life_expectancy'], errors='coerce')
-        
+
         # Eliminamos cualquier fila que tenga valores nulos en columnas clave
         df.dropna(subset=['year', 'life_expectancy', 'country'], inplace=True)
-        
+
         # Convertimos el año a un número entero (ej. 2021.0 -> 2021)
         df['year'] = df['year'].astype(int)
-        
+
         print(f"Datos cargados y procesados exitosamente. {len(df)} registros válidos para la variante '{variant_to_keep}'.")
         return df
 
@@ -109,10 +112,10 @@ def index():
         except Exception as e:
             error = f"Ocurrió un error inesperado: {e}"
 
-    return render_template('index.html', 
-                           countries=countries, 
-                           min_year=min_year, 
-                           max_year=max_year, 
+    return render_template('index.html',
+                           countries=countries,
+                           min_year=min_year,
+                           max_year=max_year,
                            result=result,
                            error=error,
                            selected_data=selected_data)
