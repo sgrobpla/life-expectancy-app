@@ -44,10 +44,6 @@ Los datos de esperanza de vida utilizados en esta aplicación han sido obtenidos
 
 Esta aplicación fue creada a través de un proceso de **vibecoding**: una sesión de desarrollo colaborativa, conversacional y guiada **con la ayuda de Gemini 2.5 de Google**. El objetivo fue seguir las mejores prácticas desde el principio, incluyendo el uso de entornos virtuales, control de versiones con Git/GitHub y un enfoque iterativo para resolver problemas y mejorar la experiencia de usuario.
 
-### Próximas Características
-
-Actualmente estoy trabajando en la implementación de traducciones para la interfaz de la aplicación. El objetivo es que esté disponible en múltiples idiomas, un proceso que se está acelerando mediante el uso de IA para la localización.
-
 ---
 
 <h1 id="equivalent-age-calculator">Equivalent Age Calculator</h1>
@@ -89,7 +85,3 @@ The life expectancy data used in this application was obtained from the United N
 ### Development Process & Acknowledgements
 
 This application was created through a process of **vibecoding**: a collaborative, conversational, and guided development session **with the help of Gemini 2.5 from Google**. The goal was to follow best practices from the outset, including the use of virtual environments, version control with Git/GitHub, and an iterative approach to problem-solving and improving the user experience.
-
-### Future Features
-
-I am currently working on implementing translations for the application's interface. The goal is to make it available in multiple languages, a process being accelerated by using AI for localization.
